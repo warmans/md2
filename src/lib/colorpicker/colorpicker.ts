@@ -179,7 +179,7 @@ export class Md2ColorChange {
   host: {
     'role': 'colorpicker',
     '[id]': 'id',
-    '[class.color-focus]': 'inputFocused || !disabled',
+    '[class.color-focus]': 'isInputFocus || !disabled',
     '[class.md2-colorpicker-disabled]': 'disabled',
     '[attr.aria-label]': 'placeholder',
     '[attr.aria-required]': 'required.toString()',
@@ -228,7 +228,7 @@ export class Md2Colorpicker implements OnDestroy, ControlValueAccessor {
   private fontColor: string;
   private backAreaColor: string;
   private _container: Container = 'inline';
-  private isInputValidColor: boolean = false;
+  isInputValidColor: boolean = false;
 
   _onChange = (value: any) => { };
   _onTouched = () => { };
@@ -305,7 +305,7 @@ export class Md2Colorpicker implements OnDestroy, ControlValueAccessor {
   @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
   @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
-  @ViewChildren(TemplatePortalDirective) templatePortal: Portal<any>;
+  @ViewChildren(TemplatePortalDirective) templatePortal: any;
 
   constructor(private _element: ElementRef, private overlay: Overlay,
     private _viewContainerRef: ViewContainerRef, private _renderer: Renderer,
